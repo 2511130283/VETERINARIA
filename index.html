@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VETCARE - Sistema Veterinario</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <!-- MENÚ LATERAL -->
+    <aside class="sidebar">
+        <h2>VETCARE</h2>
+        <p>Sistema Veterinario</p>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#mascotas">Mascotas</a>
+            <a href="#veterinarios">Veterinarios</a>
+            <a href="#consultas">Consultas</a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+        <!-- INICIO -->
+        <header id="inicio">
+            <h1>Bienvenido a VETCARE</h1>
+            <p>Panel de administración veterinaria</p>
+        </header>
+
+        <section class="estadisticas">
+            <div class="panel">
+                <h3>Total de mascotas</h3>
+                <p id="totalMascotas">0</p>
+            </div>
+
+            <div class="panel">
+                <h3>Total de veterinarios</h3>
+                <p id="totalVeterinarios">0</p>
+            </div>
+
+            <div class="panel">
+                <h3>Total de consultas</h3>
+                <p id="totalConsultas">0</p>
+            </div>
+        </section>
+
+        <!-- MÓDULO DE MASCOTAS -->
+        <section id="mascotas" class="panel">
+            <h2>Registro de mascotas</h2>
+
+            <form id="formMascota">
+                <input type="hidden" id="mascotaId">
+
+                <div class="form-grid">
+
+                    <div class="campo">
+                        <label>Nombre del dueño</label>
+                        <input type="text" id="nombreDueno" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>DNI</label>
+                        <input type="text" id="dni" maxlength="8">
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input type="text" id="telefono">
+                    </div>
+
+                    <div class="campo">
+                        <label>Nombre de la mascota</label>
+                        <input type="text" id="nombreMascota" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>Especie</label>
+                        <select id="especie" required>
+                            <option value="">Seleccionar</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Raza</label>
+                        <input type="text" id="raza">
+                    </div>
+
+                    <div class="campo">
+                        <label>Edad</label>
+                        <input type="number" id="edad" min="0">
+                    </div>
+
+                    <div class="campo">
+                        <label>Sexo</label>
+                        <select id="sexo">
+                            <option value="">Seleccionar</option>
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" id="btnGuardar">Guardar mascota</button>
+                    <button type="button" id="btnCancelar">Cancelar</button>
+                </div>
+            </form>
+
+            <h3>Lista de mascotas</h3>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mascota</th>
+                            <th>Especie</th>
+                            <th>Raza</th>
+                            <th>Edad</th>
+                            <th>Sexo</th>
+                            <th>Dueño</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaMascotas"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- MÓDULO DE VETERINARIOS -->
+        <section id="veterinarios" class="panel">
+            <h2>Registro de veterinarios</h2>
+
+            <form id="formVeterinario">
+                <input type="hidden" id="veterinarioId">
+
+                <div class="form-grid">
+
+                    <div class="campo">
+                        <label>Nombre del veterinario</label>
+                        <input type="text" id="nombreVeterinario" required>
+                    </div>
+
+                    <div class="campo">
+                        <label>DNI</label>
+                        <input type="text" id="dniVeterinario" maxlength="8">
+                    </div>
+
+                    <div class="campo">
+                        <label>Teléfono</label>
+                        <input type="text" id="telefonoVeterinario">
+                    </div>
+
+                    <div class="campo">
+                        <label>Correo electrónico</label>
+                        <input type="email" id="correoVeterinario">
+                    </div>
+
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" id="btnGuardarVeterinario">
+                        Guardar veterinario
+                    </button>
+
+                    <button type="button" id="btnCancelarVeterinario">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <h3>Lista de veterinarios</h3>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaVeterinarios"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- MÓDULO DE CONSULTAS -->
+        <section id="consultas" class="panel">
+            <h2>Registro de consultas</h2>
+
+            <form id="formConsulta">
+                <input type="hidden" id="consultaId">
+
+                <div class="form-grid">
+
+                    <div class="campo">
+                        <label>Mascota</label>
+                        <select id="mascotaConsulta" required>
+                            <option value="">Seleccionar mascota</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Veterinario</label>
+                        <select id="veterinarioConsulta" required>
+                            <option value="">Seleccionar veterinario</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>Fecha de consulta</label>
+                        <input type="datetime-local" id="fechaConsulta">
+                    </div>
+
+                    <div class="campo">
+                        <label>Costo</label>
+                        <input type="number" id="costoConsulta" min="0" step="0.01">
+                    </div>
+
+                    <div class="campo">
+                        <label>Diagnóstico</label>
+                        <textarea id="diagnostico"></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label>Tratamiento</label>
+                        <textarea id="tratamiento"></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label>Estado</label>
+                        <select id="estadoConsulta">
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Finalizada">Finalizada</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" id="btnGuardarConsulta">
+                        Guardar consulta
+                    </button>
+
+                    <button type="button" id="btnCancelarConsulta">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+
+            <h3>Lista de consultas</h3>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Mascota</th>
+                            <th>Veterinario</th>
+                            <th>Fecha</th>
+                            <th>Diagnóstico</th>
+                            <th>Tratamiento</th>
+                            <th>Costo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaConsultas"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- CONEXIÓN CON SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
